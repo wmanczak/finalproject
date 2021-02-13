@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Charts from "./components/Charts";
+import MainHeader from "./components/Header";
+import MainContainer from "./components/Container";
+import InfoContainer from "./components/info";
+import {OrbitControls} from "@react-three/drei";
+import {Canvas} from "react-three-fiber";
+import Shape3d from "./components/3dShapes";
+const App = () => {
+    return (
+        <>
+            <MainHeader/>
+            <MainContainer/>
+            <Shape3d/>
+            <Charts/>
+        </>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    )
 }
 
 export default App;
