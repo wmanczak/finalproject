@@ -1,23 +1,39 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import axios from "axios";
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, LineChart} from 'recharts';
-import { curveCardinal } from 'd3-shape';
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  LineChart,
+} from "recharts";
+import { curveCardinal } from "d3-shape";
+import {
+  fetchWeeklyStatistics,
+  selectWeeklyStatistics,
+  selectWeeklyStatisticsLoading,
+} from "../conteiners/weekly-statistics/weeklyStatisticsSlice";
 
-const Charts=()=> {
-    const [data, setData] = useState([]);
-    useEffect(async () => {
-        const result = await axios.get('https://app.formly.me/api/slack-bot/extended-activity?from=2020-12-30T00:00&to=2021-01-19T00:00');
-        setData(result.data)
+const Charts = () => {
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const statistics = useSelector(selectWeeklyStatistics);
+  const statisticsLoading = useSelector(selectWeeklyStatisticsLoading);
 
+  useEffect(async () => {
+    dispatch(fetchWeeklyStatistics());
+  }, [dispatch]);
 
-    }, [])
-
-
-  return(
-      <>
-          </>
-  )
-}
+  return (
+    <>
+      {JSON.stringify(statistics)}
+      {statisticsLoading}
+    </>
+  );
+};
 
 export default Charts;
