@@ -9,7 +9,8 @@ import Shape3d from "../components/3dShapes";
 import Charts from "../components/Charts";
 import MainContainer from "../components/Container";
 import MainHeader from "../components/Header";
-
+import NewVisualisationCountChart from "../components/New VisualisationCountChart";
+import DataPicker from "../components/DataPicker";
 const AppRouter = () => {
   return (
     <Router>
@@ -25,6 +26,8 @@ const AppRouter = () => {
           <MainContainer />
           <Shape3d />
           <Charts />
+          <NewVisualisationCountChart/>
+          <DataPicker/>
         </Route>
       </Switch>
     </Router>
