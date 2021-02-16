@@ -1,44 +1,54 @@
-import React, {Component} from "react";
-import "react-dates/initialize"
-import {DateRangePicker} from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
+import React, { useState } from "react";
+import moment from "moment";
+import "react-dates/initialize";
+import { DateRangePicker } from "react-dates";
+import "react-dates/lib/css/_datepicker.css";
+import { useDispatch } from "react-redux";
+import { fetchWeeklyStatistics } from "../conteiners/weekly-statistics/weeklyStatisticsSlice";
 
-class DataPicker extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            startDate: null,
-            endDate: null
+const DataPicker = () => {
+  const dispatch = useDispatch();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [focusedInput, setFocusedInput] = useState();
+
+  const handleDatePickerChange = ({ startDate, endDate }) => {
+    if ((startDate, endDate)) {
+      dispatch(
+        fetchWeeklyStatistics(
+          moment(startDate).format("YYYY-MM-DDTMM:SS"),
+          moment(endDate).format("YYYY-MM-DDTMM:SS")
+        )
+      );
+    }
+    setStartDate(startDate);
+    setEndDate(endDate);
+  };
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+      }}
+      className="Data-picker"
+    >
+      <DateRangePicker
+        startDate={startDate}
+        endDate={endDate}
+        isOutsideRange={(day) =>
+          moment(day).isAfter(moment.now()) ||
+          moment(day).isBefore(moment("2020-01-01"))
         }
-    }
-    alertStartDate=()=>{
-        alert(this.state.startDate)
-    }
-    alertEndDate=()=>{
-        alert(this.state.endDate)
-    }
-    render() {
-        return (
-            <div style={{
-                width:"100%",
-                display: "flex",
-                alignItems:"center"
-            }} className="Data-picker">
-                <DateRangePicker
-                    startDate={this.state.startDate}
-                    startDateId="your_unique_start_date_id"
-                    endDate={this.state.endDate}
-                    endDateId="your_unique_end_date_id"
-                    onDatesChange={({startDate, endDate}) => this.setState({startDate, endDate})}
-                    focusedInput={this.state.focusedInput}
-                    onFocusChange={focusedInput => this.setState({focusedInput})}
-                />
-
-
-            </div>
-        );
-    }
-}
-
+        startDateId="your_unique_start_date_id"
+        endDateId="your_unique_end_date_id"
+        onDatesChange={handleDatePickerChange}
+        focusedInput={focusedInput}
+        onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+      />
+    </div>
+  );
+};
 
 export default DataPicker;
