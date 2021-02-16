@@ -19,7 +19,6 @@ import {
 } from "../conteiners/weekly-statistics/weeklyStatisticsSlice";
 
 const Charts = () => {
-  const [data, setData] = useState([]);
   const dispatch = useDispatch();
   const statistics = useSelector(selectWeeklyStatistics);
   const statisticsLoading = useSelector(selectWeeklyStatisticsLoading);

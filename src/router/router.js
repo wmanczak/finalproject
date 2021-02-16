@@ -11,36 +11,28 @@ import MainContainer from "../components/Container";
 import MainHeader from "../components/Header";
 import NewVisualisationCountChart from "../components/New VisualisationCountChart";
 import DataPicker from "../components/DataPicker";
+
 const AppRouter = () => {
   return (
     <Router>
       <MainHeader />
       <Switch>
-        <Route path="/dupa/:id">
-          <About />
+        <Route path="/Statistics" exact component={NewVisualisationCountChart}>
+          <DataPicker/>
+          <NewVisualisationCountChart/>
+          <Charts />
         </Route>
         <Route path="/users">
-          <Users />
         </Route>
         <Route path="/">
           <MainContainer />
           <Shape3d />
-          <Charts />
-          <NewVisualisationCountChart/>
-          <DataPicker/>
         </Route>
       </Switch>
     </Router>
   );
 };
 
-function About() {
-  const { id } = useParams();
-  return <h2>{id}</h2>;
-}
 
-function Users() {
-  return <h2>Users</h2>;
-}
 
 export default AppRouter;

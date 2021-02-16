@@ -2,10 +2,14 @@
 import React from "react";
 import {Line} from "react-chartjs-2";
 import {useDispatch, useSelector} from "react-redux";
+import {
+    selectWeeklyStatistics,
+    selectWeeklyStatisticsLoading
+} from "../conteiners/weekly-statistics/weeklyStatisticsSlice";
 
 const NewVisualisationCountChart = () => {
-// const dispatch=useDispatch();
-const state=useSelector(state=> state.weeklyStatistics)
+    const statistics = useSelector(selectWeeklyStatistics);
+    const statisticsLoading = useSelector(selectWeeklyStatisticsLoading);
 
     return (
         <Line data={state.data}/>

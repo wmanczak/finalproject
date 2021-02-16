@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import "react-dates/initialize"
 import {DateRangePicker} from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+
 class DataPicker extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +23,6 @@ class DataPicker extends Component {
                 width:"100%",
                 display: "flex",
                 alignItems:"center"
-
             }} className="Data-picker">
                 <DateRangePicker
                     startDate={this.state.startDate}
@@ -33,7 +33,6 @@ class DataPicker extends Component {
                     focusedInput={this.state.focusedInput}
                     onFocusChange={focusedInput => this.setState({focusedInput})}
                 />
-
 
 
             </div>
