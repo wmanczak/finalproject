@@ -54,10 +54,10 @@ export const selectWeeklyStatisticsParsed = createSelector(
       ...week.overallActivity,
     }))
 );
-export const fetchWeeklyStatistics = (form, to) => async (dispatch) => {
+export const fetchWeeklyStatistics = ( from, to) => async (dispatch) => {
   try {
     const statistics = await weeklyStatisticsService.fetchWeeklyStatistics(
-      form,
+      from,
       to
     );
     dispatch(fetchWeeklyStatisticsSuccess({ statistics }));

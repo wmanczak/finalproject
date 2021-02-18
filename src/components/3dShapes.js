@@ -3,14 +3,24 @@ import {Canvas, useFrame} from "react-three-fiber";
 import {softShadows, MeshWobbleMaterial, OrbitControls} from "@react-three/drei";
 import InfoContainer from "./info";
 import Typography from "@material-ui/core/Typography";
-import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles";
+import {createMuiTheme, makeStyles, ThemeProvider} from "@material-ui/core/styles";
+import {Paper} from "@material-ui/core";
+import {motion} from "framer-motion";
 
 softShadows()
+
+const newStyles = makeStyles({
+    root: {
+        maxHeight: "100%",
+        height: 740,
+        textAlign: "center",
+    }
+});
 const Shape3d = () => {
+    const classes=newStyles()
     const theme = createMuiTheme({
         typography: {
             fontFamily: 'sans-serif',
-
 
         },
 
@@ -19,20 +29,19 @@ const Shape3d = () => {
 
     return (
         <ThemeProvider theme={theme}>
-        <section style={{
-            height: 600,
-            fontSize: "2rem",
-            color:"grey",
-            textAlign:"center"
-        }}>
+            <Paper className={classes.root}>
+            <section style={{
+            height: 700,
+            textAlign:"center",
+
+            }}>
 
             <Typography style={{
-                marginTop:30
-            }} variant="h4"> Our app will help you to customize, shape and control your all data</Typography>
+            }} variant="h3"> Shape and control your all data</Typography>
+
+                >
          <Canvas
-                style={{
-                    marginTop:40
-                }}
+
                 colorManagement
                 shadowMap
                 camera={{position: [-5, 2, 10], fov: 60}}>
@@ -65,12 +74,13 @@ const Shape3d = () => {
                         args={[3, 2, 1]}
                         speed={1}
                     />
-                    <InfoContainer position={[-2, 1, -5]} color='#c71c49' speed={6}/>
-                    <InfoContainer position={[5, 1, -2]} color='#c71c49' speed={6}/>
+                    <InfoContainer position={[-2, 1, -5]} color='#b22c5a' speed={6}/>
+                    <InfoContainer position={[5, 1, -2]} color='#b22c5a' speed={6}/>
                 </group>
                 <OrbitControls/>
             </Canvas>
         </section>
+            </Paper>
         </ThemeProvider>
     )
 }

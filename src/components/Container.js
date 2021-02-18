@@ -4,6 +4,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Typography, ThemeProvider, Paper} from "@material-ui/core";
 import {createMuiTheme} from '@material-ui/core/styles';
 import Image from "../images/tlo2.svg"
+import {scale, rotate, translate, compose, applyToPoint} from 'transformation-matrix';
+
 
 
 const theme = createMuiTheme({
@@ -41,7 +43,7 @@ const MainContainer = () => {
                     fontSize: 20,
                     fontFamily: "sans-serif",
                     color: "grey",
-                    paddingTop: 20
+                    paddingTop: 20,
                 }}>Check and control views, statistics and many other data in your personal app</p>
             </Paper>
         </ThemeProvider>

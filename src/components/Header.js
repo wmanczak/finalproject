@@ -1,46 +1,61 @@
 import React, {useState} from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import {createStyles, makeStyles, responsiveFontSizes} from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import {Grid, Typography, Button, Paper, Switch} from "@material-ui/core";
 import {ThemeProvider, createMuiTheme} from "@material-ui/core/styles";
-import NewVisualisationCountChart from "./New VisualisationCountChart";
+import NewVisualisationCountChart from "./NewVisualisationCountChart";
 import DataPicker from "./DataPicker";
 import Shape3d from "./3dShapes";
 import {Link} from "react-router-dom";
+import {motion} from "framer-motion";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 //modele danych
 //szablony w material UI light and dark mode
 // useContext, udeReducer
 //formik with yup walidacja danych w formularzu
 
 
-const newStyles = makeStyles({
-    root: {
-        flexGrow: 1,
-        width: "100%",
-    }
-});
-
-const buttonStyles = makeStyles({
-    root: {
-        width: 400,
-        paddingLeft: 50,
-        marginTop: 20
-
-    }
 
 
-});
+const useStyles = makeStyles((theme) =>
+    createStyles({
+        root: {
+            position: 'absolute',
+            top: theme.spacing(2),
+            left: theme.spacing(2),
+            zIndex: 900,
+            [theme.breakpoints.down('xs')]: { top: theme.spacing(1), left: theme.spacing(1) }
+        },
+        container: {
+            display: 'flex',
+            [theme.breakpoints.up('sm')]: { padding: theme.spacing(0.5) }
+        },
+        buttons:{
+            width: 400,
+            paddingLeft: 50,
+            marginTop: 20
 
+        },
+        component:{
+            flexGrow: 1,
+            width: "100%",
+        },
+
+        hamburger:{
+            display: "none",
+            [theme.breakpoints.up('sm')]: { display:"block"}
+
+        }
+    })
+)
 
 const MainHeader = () => {
     const [darkMode, setDarkMode] = useState(false);
-    const classes = newStyles();
-    const buttons = buttonStyles();
+    const classes=useStyles();
     const [value, setValue] = React.useState(0);
     const theme = createMuiTheme({
         palette: {
@@ -49,13 +64,19 @@ const MainHeader = () => {
 
     })
 
+
     const handleChange = (event, newValue) => {
         setValue(newValue)
     }
+
+
     return (
-        <ThemeProvider theme={theme}>
-            <Paper square className={classes.root}>
-                <Grid container direction="row" justify="space-around">
+
+            <Paper square className={classes.hamburger}>
+                <Grid container direction="row"
+                      justify="space-around"
+
+                >
                     <Tabs
                         value={value}
                         onChange={handleChange}
@@ -65,20 +86,37 @@ const MainHeader = () => {
                         aria-label="icon label tabs example"
 
                     >
-                        <Tab icon={<HomeIcon/>} label="Home" component={Link} to="/" style={{}}
+                        <Tab icon={<HomeIcon/>} label="Home" component={Link} to="/" style={{
+                            marginRight: 50,
+                        }}
                         />
-                        <Tab icon={<VisibilityIcon/>} label="Views" component={Link} to="Views" style={{}}
-                        />
-                        <Tab icon={<EqualizerIcon/>} label="Statistics" component={Link} to="Statistics" style={{}}/>
-                        <Tab icon={<InfoIcon/>} label="What is Formly ?" component={Link} to="What is Formly ?"
-                             style={{}}/>
-                        <div className={buttons.root}>
 
+                        <Tab icon={<EqualizerIcon/>} label="Statistics" component={Link} to="Statistics" style={{
+                            marginRight: 50,
+
+                        }}/>
+                        <Tab icon={<InfoIcon/>} label="What is Formly ?" component={Link} to="What"
+                             style={{
+                                 marginRight: 50,
+                                 width: 200
+
+                             }}/>
+
+                        <div className={classes.buttons}>
+                            <motion.div
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                            >
                             <Button
+                                target="_blank"
+                                href="https://formly.pl/"
                                 variant="outlined"
                                 color="secondary"
                             > Check Formly</Button>
-                        </div>
+                        </motion.div>
+
+                    </div>
+
                     </Tabs>
                     <div style={{
                         marginTop: 15
@@ -92,7 +130,6 @@ const MainHeader = () => {
                         </Switch></div>
                 </Grid>
             </Paper>
-        </ThemeProvider>
     )
 }
 

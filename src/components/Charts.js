@@ -29,8 +29,7 @@ const Charts = () => {
 
   return (
     <>
-      {JSON.stringify(statistics)}
-      {statisticsLoading}
+
     </>
   );
 };

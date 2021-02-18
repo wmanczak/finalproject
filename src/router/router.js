@@ -9,10 +9,19 @@ import Shape3d from "../components/3dShapes";
 import Charts from "../components/Charts";
 import MainContainer from "../components/Container";
 import MainHeader from "../components/Header";
-import NewVisualisationCountChart from "../components/New VisualisationCountChart";
+import NewVisualisationCountChart from "../components/NewVisualisationCountChart";
 import DataPicker from "../components/DataPicker";
+import FooterNav from "../components/Footer";
+import FormlyInfo from "../components/FormlyInformations";
+import MyComponent from "../components/FormlyInformations";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from '@material-ui/core/styles';
 
 const AppRouter = () => {
+  const theme = useTheme();
+
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
   return (
     <Router>
       <MainHeader />
@@ -22,11 +31,13 @@ const AppRouter = () => {
           <NewVisualisationCountChart/>
           <Charts />
         </Route>
-        <Route path="/users">
+        <Route path="/What">
+          <FormlyInfo/>
         </Route>
         <Route path="/">
           <MainContainer />
           <Shape3d />
+          <FooterNav/>
         </Route>
       </Switch>
     </Router>
