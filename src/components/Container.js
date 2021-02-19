@@ -7,17 +7,6 @@ import Image from "../images/tlo2.svg"
 import {scale, rotate, translate, compose, applyToPoint} from 'transformation-matrix';
 
 
-
-const theme = createMuiTheme({
-    typography: {
-        fontFamily: 'sans-serif',
-
-
-    },
-
-
-});
-
 const newStyles = makeStyles({
     root: {
         maxHeight: "100%",
@@ -34,7 +23,14 @@ const styles = {
 
 const MainContainer = () => {
     const classes = newStyles();
+    const [darkMode, setDarkMode] = useState(false);
+    const theme = createMuiTheme({
+        palette: {
+            type: darkMode ? 'dark' : 'light',
+        },
 
+
+    });
     return (
         <ThemeProvider theme={theme}>
             <Paper className={classes.root} style={styles.paperContainer}>

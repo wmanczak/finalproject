@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {createStyles, makeStyles} from "@material-ui/core/styles";
+import {createMuiTheme, createStyles, makeStyles, ThemeProvider} from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
@@ -17,8 +17,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {Grid, Button, Switch} from "@material-ui/core";
 import NewVisualisationCountChart from "./NewVisualisationCountChart";
 import DataPicker from "./DataPicker";
@@ -56,6 +55,8 @@ const useStyles = makeStyles((theme) =>
 );
 
 const MainHeader = () => {
+    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
     const [darkMode, setDarkMode] = useState(false);
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -68,6 +69,7 @@ const MainHeader = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
 
     return (
         <>
@@ -101,7 +103,7 @@ const MainHeader = () => {
                             value={value}
                             onChange={handleChange}
                             variant="fullWidth" F
-                            textColor="primary"
+                            textColor="secondary"
                             aria-label="icon label tabs example"
                         >
                             <Tab
@@ -143,21 +145,21 @@ const MainHeader = () => {
                                 </motion.div>
                             </div>
                         </Tabs>
-                        {/* <div
-              style={{
-                marginTop: 15,
-              }}
-            >
-              <Switch
-                color="primary"
-                checked={darkMode}
-                onChange={() => setDarkMode(!darkMode)}
-              >
-                <Shape3d />
-                <NewVisualisationCountChart />
-                <DataPicker />
-              </Switch>
-            </div> */}
+                        <div
+                            style={{
+                                marginTop: 15,
+                            }}
+                        >
+                            {/*<Switch*/}
+                            {/*  color="primary"*/}
+                            {/*  checked={darkMode}*/}
+                            {/*  onChange={() => setDarkMode(!darkMode)}*/}
+                            {/*>*/}
+                            {/*  <Shape3d />*/}
+                            {/*  <NewVisualisationCountChart />*/}
+                            {/*  <DataPicker />*/}
+                            {/*</Switch>*/}
+                        </div>
                     </Grid>
                 </Toolbar>
             </AppBar>
@@ -179,19 +181,19 @@ const MainHeader = () => {
                     value={value}
                 >
                     <ListItem button="Home"
-                     component={Link} to="/">
-                            <ListItemIcon>
-                                <HomeIcon/></ListItemIcon>
-                            <ListItemText primary="Home"/>
-                        </ListItem>
+                              component={Link} to="/">
+                        <ListItemIcon>
+                            <HomeIcon/></ListItemIcon>
+                        <ListItemText primary="Home"/>
+                    </ListItem>
                     <ListItem button="Statistics"
-                      component={Link} to="Statistics">
+                              component={Link} to="Statistics">
                         <ListItemIcon>
                             <EqualizerIcon/></ListItemIcon>
                         <ListItemText primary="Statistics"/>
                     </ListItem>
                     <ListItem button="What is Formly"
-                         component={Link} to="What">
+                              component={Link} to="What">
                         <ListItemIcon>
                             <HomeIcon></HomeIcon></ListItemIcon>
                         <ListItemText primary="What is Formly"/>

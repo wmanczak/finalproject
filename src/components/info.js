@@ -1,9 +1,9 @@
-import React, {useRef, useState } from "react"
+import React, {useRef, useState} from "react"
 import {useFrame} from "react-three-fiber"
-import {MeshWobbleMaterial, OrbitControls } from "@react-three/drei";
+import {MeshWobbleMaterial, OrbitControls} from "@react-three/drei";
 import {useSpring, animated} from "react-spring-three";
 
-const InfoContainer = ({ position, color, speed, args }) => {
+const InfoContainer = ({position, color, speed, args}) => {
     const mesh = useRef();
     useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
 
@@ -18,7 +18,7 @@ const InfoContainer = ({ position, color, speed, args }) => {
             onClick={() => setExpand(!expand)}
             scale={props.scale}
             castShadow>
-            <boxBufferGeometry attach='geometry' args={args} />
+            <boxBufferGeometry attach='geometry' args={args}/>
             <MeshWobbleMaterial
                 color={color}
                 speed={speed}
@@ -30,8 +30,6 @@ const InfoContainer = ({ position, color, speed, args }) => {
 
     );
 };
-
-
 
 
 export default InfoContainer

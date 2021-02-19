@@ -71,13 +71,13 @@ const FormlyInfo = () => {
                 <ScrollPage page={4}>
                     <Animator animation={batch(Fade(), Sticky())}>
                         <div style={{
-                            width:"100%",
-                            textAlign:"center"
+                            width: "100%",
+                            textAlign: "center"
                         }}>
                         <span style={{fontSize: "3em"}}>
                             Check Formly and be Formly !
           </span>
-                            </div>
+                        </div>
                         <br></br>
 
                         <span style={{fontSize: "3em",}}>
@@ -119,80 +119,59 @@ const FormlyInfo = () => {
                     } = props;
                     return (
                         <div
-                        style={{
-                            width:"100%",
-                            display:"flex",
-                            justifyContent:"center"
+                            style={{
+                                width: "100%",
+                                display: "flex",
+                                justifyContent: "center"
 
-                        }}>
-                        <form onSubmit={handleSubmit}
-                              style={{
-                              }}
-                        >
-                            <label htmlFor="email" style={{
-                                display: "block",
-                                tWeight: "bold",
-                                marginBottom: ".5rem"
                             }}>
-                                Email
-                            </label>
-                            <input
-                                id="email"
-                                placeholder="Enter your email"
-                                type="text"
-                                value={values.email}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                className={
-                                    errors.email && touched.email
-                                        ? "text-input error"
-                                        : "text-input"}
-
-                                style={{
-                                    padding: ".5rem",
-                                    fontSize: "16px",
-                                    display: "block",
-                                    borderRadius: "4px",
-                                    border: "1px solid #ccc",
-                                }}
-
-
-                            />
-                            {
-                                errors.email && touched.email && (
-                                    <div className="input-feedback">{errors.email}</div>
-                                )
-                            }
-
-                            <button
-                                type="button"
-                                className="outline"
-                                onClick={handleReset}
-                                disabled={!dirty || isSubmitting}
-                                style={{
-
-                                    maxWidth: "150px",
-                                    margin: "20px 0",
-                                    padding: "12px 20px",
-                                    borderStyle: "none",
-                                    borderRadius: "5px",
-                                    backgroundColor: "#b22c5a",
-                                    boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.15)",
-                                    fontSize: "17px",
-                                    fontWeight: "500",
-                                    color: "#fff",
-                                    cursor: "pointer",
-                                    outline: "none",
-
-                                }}
+                            <form onSubmit={handleSubmit}
+                                  style={{}}
                             >
-                                Reset
-                            </button>
-                            <button type="submit" disabled={isSubmitting}
+                                <label htmlFor="email" style={{
+                                    display: "block",
+                                    tWeight: "bold",
+                                    marginBottom: ".5rem"
+                                }}>
+                                    Email
+                                </label>
+                                <input
+                                    id="email"
+                                    placeholder="Enter your email"
+                                    type="text"
+                                    value={values.email}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    className={
+                                        errors.email && touched.email
+                                            ? "text-input error"
+                                            : "text-input"}
+
+                                    style={{
+                                        padding: ".5rem",
+                                        fontSize: "16px",
+                                        display: "block",
+                                        borderRadius: "4px",
+                                        border: "1px solid #ccc",
+                                    }}
+
+
+                                />
+                                {
+                                    errors.email && touched.email && (
+                                        <div className="input-feedback">{errors.email}</div>
+                                    )
+                                }
+
+                                <button
+                                    type="button"
+                                    className="outline"
+                                    onClick={handleReset}
+                                    disabled={!dirty || isSubmitting}
                                     style={{
 
                                         maxWidth: "150px",
-                                        margin: "20px 10px",
+                                        margin: "20px 0",
                                         padding: "12px 20px",
                                         borderStyle: "none",
                                         borderRadius: "5px",
@@ -204,13 +183,33 @@ const FormlyInfo = () => {
                                         cursor: "pointer",
                                         outline: "none",
 
+                                    }}
+                                >
+                                    Reset
+                                </button>
+                                <button type="submit" disabled={isSubmitting}
+                                        style={{
 
-                                    }}>
-                                Submit
+                                            maxWidth: "150px",
+                                            margin: "20px 10px",
+                                            padding: "12px 20px",
+                                            borderStyle: "none",
+                                            borderRadius: "5px",
+                                            backgroundColor: "#b22c5a",
+                                            boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.15)",
+                                            fontSize: "17px",
+                                            fontWeight: "500",
+                                            color: "#fff",
+                                            cursor: "pointer",
+                                            outline: "none",
 
-                            </button>
 
-                        </form>
+                                        }}>
+                                    Submit
+
+                                </button>
+
+                            </form>
                         </div>
                     );
                 }}
