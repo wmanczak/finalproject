@@ -13,7 +13,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 const useStyles = makeStyles({
     root: {
         width: "100%",
-        height: 70,
+        height: 90,
         backgroundColor: "#b22c5a"
     },
 });
@@ -34,7 +34,7 @@ const FooterNav = () => {
             <BottomNavigationAction href="https://www.instagram.com/formly.pl/?hl=pl" target="_blank" label="Instagram"
                                     style={{color: "white"}} value="favorites" icon=<InstagramIcon
                                     style={{color: "white"}}/>/>
-            <BottomNavigationAction href="https://www.linkedin.com/company/formly/" label="LinkedIn"
+            <BottomNavigationAction href="https://www.linkedin.com/company/formly/" target="_blank" label="LinkedIn"
                                     style={{color: "white"}} value="nearby"
                                     icon={<LinkedInIcon style={{color: "white"}}/>}/>
         </BottomNavigation>

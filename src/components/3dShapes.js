@@ -32,6 +32,7 @@ const Shape3d = () => {
             <Paper className={classes.root}>
             <section style={{
             height: 700,
+                padding:"120px 40px",
             textAlign:"center",
 
             }}>

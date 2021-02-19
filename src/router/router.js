@@ -10,6 +10,8 @@ import FooterNav from "../components/Footer";
 import FormlyInfo from "../components/FormlyInformations";
 import ViewContainer from "../components/ViewContainer";
 
+
+
 const AppRouter = () => {
   return (
     <Router>

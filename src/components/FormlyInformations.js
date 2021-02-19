@@ -62,7 +62,7 @@ const FormlyInfo = () => {
                     <div style={FlexCenterStyle}>
           <span style={{fontSize: "3em"}}>
             <Animator animation={MoveIn(-1000, 0)}> You can add various products👋🏻</Animator>
-            <Animator animation={MoveIn(1000, 0)}> 🙋🏻Ffrom multiple providers️</Animator>
+            <Animator animation={MoveIn(1000, 0)}> 🙋🏻From multiple providers️</Animator>
             <Animator animation={MoveOut(1000, 0)}>Into the shopping list✋🏻</Animator>
             <Animator animation={MoveOut(-1000, 0)}>And create your online portfolio 💛</Animator>
           </span>
@@ -70,19 +70,24 @@ const FormlyInfo = () => {
                 </ScrollPage>
                 <ScrollPage page={4}>
                     <Animator animation={batch(Fade(), Sticky())}>
+                        <div style={{
+                            width:"100%",
+                            textAlign:"center"
+                        }}>
                         <span style={{fontSize: "3em"}}>
                             Check Formly and be Formly !
           </span>
+                            </div>
                         <br></br>
+
                         <span style={{fontSize: "3em",}}>
                             For more informations, send us an email
+
                     </span>
 
                     </Animator>
                 </ScrollPage>
             </ScrollContainer>
-
-
 
 
             <Formik
@@ -113,10 +118,16 @@ const FormlyInfo = () => {
                         handleReset
                     } = props;
                     return (
-                        <form onSubmit={handleSubmit}
+                        <div
                         style={{
-                       textAlign:"center"
-                                                 }}
+                            width:"100%",
+                            display:"flex",
+                            justifyContent:"center"
+
+                        }}>
+                        <form onSubmit={handleSubmit}
+                              style={{
+                              }}
                         >
                             <label htmlFor="email" style={{
                                 display: "block",
@@ -200,6 +211,7 @@ const FormlyInfo = () => {
                             </button>
 
                         </form>
+                        </div>
                     );
                 }}
             </Formik>
